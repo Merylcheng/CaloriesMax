@@ -1,35 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+  async function logMovies() {
+    const response = await fetch("https://api.spoonacular.com/recipes/complexSearch?minCalories=50&maxCalories=500&number=3&includeIngredients=tomato,cheese&addRecipeInstructions=true&apiKey=5fd761dd54a74faf8f5d37f3d4570012");
+    const movies = await response.json();
+    console.log(movies);
+  }
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  logMovies()
+
+
+
+
+    return (
+
+
+  
+ <h1>test</h1>
+
+    )
+  
 }
 
 export default App
