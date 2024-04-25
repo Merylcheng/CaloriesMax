@@ -10,7 +10,7 @@ function RecipeDetails() {
     async function getInstructions() {
       try {
         const response = await fetch(
-          `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=819bdff34c06457996f606323df51af6`
+          `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=2d2853b3f2424c1b9ba394f8755887b6`
         );
         const data = await response.json();
         console.log("Data from API:", data); // [{steps: [{step: xxx}]}] // data [0].steps
@@ -27,18 +27,16 @@ function RecipeDetails() {
   return (
     <div>
       <h1>Instructions - </h1>
-
       {instructions?.map((instruction, index) => (
         <div key={index}>
           <div>
             <p>
-              <img src={instruction.image} alt={instruction.title} />
               Step {instruction.number}. {instruction.step}
+              {/* <img src={instruction.image} alt={instruction.title} /> */}
             </p>
           </div>
         </div>
       ))}
-
       <h2>Ingredients</h2>
       {ingredients?.map((ingredient, index) => (
         <div key={index}>
@@ -47,6 +45,7 @@ function RecipeDetails() {
           </ul>
         </div>
       ))}
+      <button>Add to Favourite</button>;
     </div>
   );
 }
