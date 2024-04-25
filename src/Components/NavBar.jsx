@@ -7,6 +7,7 @@ function NavBar() {
       <Link to="/Home">Home</Link> |
       <Link to="/RecipeList">Recipes</Link> |
       <Link to="/FavList">FavList</Link>
+      <Link to="/recipes/:id">Instructions</Link>
 
 
     </nav>

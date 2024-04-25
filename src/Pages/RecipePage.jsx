@@ -12,7 +12,7 @@ function RecipePage() {
     
     async function getRecipesData() {
       const response = await fetch("https://api.spoonacular.com/recipes/complexSearch?minCalories=50&maxCalories=2000&number=10&apiKey=2d2853b3f2424c1b9ba394f8755887b6");
-    //   const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?minCalories=50&maxCalories=2000&number=10&apiKey=${process.env.REACT_APIKEY}`)
+      // const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?minCalories=50&maxCalories=2000&number=10&apiKey=${process.env.REACT_APIKEY}`)
       const recipesData = await response.json();
       setRecipesData(recipesData);
       console.log(recipesData)

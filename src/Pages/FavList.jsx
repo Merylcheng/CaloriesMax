@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import Airtable from "airtable";
+
 
 
 function FavList() {
@@ -21,9 +21,10 @@ useEffect(() => {
       if (!response.ok) {
         throw new Error("Failed to fetch data");
       }
-      const data = await response.json();
-      setFavourites(data.records);
-      console.log(data)
+      const airtable = await response.json();
+      console.log('Data from Airtable:', airtable)
+      setFavourites(airtable.records);
+      console.log(airtable.records)
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -38,22 +39,25 @@ useEffect(() => {
   return (
     <div>
       <h1>Your Favourite Recipes</h1>
-      {favourites.map((recipe) => (
-          <div key={recipe.id}>
-            <p>{recipe.title}</p>
-            <img src={recipe.image} alt={recipe.title} />
+      {favourites.map((fav, index) => (
+          <div key={index}>
+            <p>
+            {fav.fields.name}
+            {fav.fields.step}
+           </p>
+          
           </div>
         ))}
       
-    
       
-    </div>
+  </div>
   );
 }
 
 
+  
 export default FavList
 
+  {/* <img src={recipe.image} alt={recipe.title} /> */}
 
-
-
+// [{field: "Name", direction: "desc"}]

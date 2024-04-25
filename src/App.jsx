@@ -6,6 +6,7 @@ import Home from './Pages/Home'
 import NavBar from './Components/NavBar'
 import MealPlanner from './Pages/MealPlanner'
 import FavList from './Pages/FavList'
+import RecipeDetails from './Pages/RecipeDetails'
 
 function App() {
   
@@ -23,10 +24,12 @@ function App() {
         {/* <Route path="/RecipeList" element={<RecipeList />} /> */}
         <Route path="/MealPlanner" element={<MealPlanner />} />
         <Route path="/FavList" element={<FavList />} />
+        {/* <Route path="/Instructions" element={<RecipeDetails />} />
+        <Route path="/Instructions/:id" element={<RecipeDetails />} /> */}
+         <Route path="/recipe/:id" element={<RecipeDetails />} />
         </Routes>
 
-        {/* <RecipeList /> */}
-        {/* <MealPlanner /> */}
+    
         
        
       </div>
