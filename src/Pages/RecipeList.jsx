@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 function RecipeList(){
@@ -8,7 +9,6 @@ function RecipeList(){
     const handleInputChange = (event) => {
         setCalories(event.target.value); // Update state on input change
       };
-    
     
     useEffect(()=>{
       getRecipeList();
@@ -25,7 +25,6 @@ function RecipeList(){
       }
     }
     
-    
       return (
         <div>
              <input
@@ -36,10 +35,12 @@ function RecipeList(){
     <button onClick={getRecipeList}>Get Meal </button>
 
           {recipeList.map((recipe) => (
+            <Link to = {`/recipe/${recipe.id}`} key ={recipe.id}>
             <div key={recipe.id}>
               <p>{recipe.title}</p>
               <img src={recipe.image} alt={recipe.title} />
             </div>
+            </Link>
           ))}
         </div>
       );
