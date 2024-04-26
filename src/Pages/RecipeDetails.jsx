@@ -2,52 +2,93 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 function RecipeDetails() {
-  const [instructions, setInstructions] = useState([]);
-  const [ingredients, setIngredients] = useState([]);
-  const [recipeImage, setRecipeImage] = useState("");
+  //   const [instructions, setInstructions] = useState([]);
+  //   const [ingredients, setIngredients] = useState([]);
+  //   const [recipeImage, setRecipeImage] = useState("");
+  const [recipe, setRecipe] = useState();
+
   const { recipeId } = useParams();
 
   useEffect(() => {
-    async function getInstructions() {
+    async function getDetails() {
       try {
         const response = await fetch(
-          `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=c001f538d0ad42f8a97dbe5294936302`
+          `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=819bdff34c06457996f606323df51af6`
         );
         const data = await response.json();
         console.log("Data from API:", data); // [{steps: [{step: xxx}]}] // data [0].steps
-        setInstructions(data.analyzedInstructions[0].steps); // Accessing recipes array from the data object
-        console.log(data.analyzedInstructions[0].steps);
-        setIngredients(data.extendedIngredients);
-        setRecipeImage(data.image);
+        // setInstructions(data.analyzedInstructions[0].steps); // Accessing recipes array from the data object
+        // console.log(data.analyzedInstructions[0].steps);
+        // setIngredients(data.extendedIngredients);
+        // setRecipeImage(data.image);
+        setRecipe(data);
       } catch (error) {
-        console.error("Error fetching Instructions:", error);
+        console.error("Error fetching recipe details", error);
       }
     }
-    getInstructions();
+    getDetails();
   }, [recipeId]);
+
+  // useEffect(() => {
+
+  async function addList() {
+    const url = "https://api.airtable.com/v0/app1DjsWsd6bMZV9r/Table%202";
+    try {
+      const response = await fetch(url, {
+        method: "POST", //add things to airtable
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer patDqswSJ4ZdyuxUH.9fe043f753120d01ac021eb008b5f3a09a8f6400aa2a16d1e36733632fd3dcc0`, // Replace YOUR_API_KEY with your Airtable API key
+        },
+        body: JSON.stringify({
+          //sent this to airtable
+          fields: {
+            id: recipeId,
+            // name: recipe.title,
+            // image: recipe.image,
+          },
+        }),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const newItem = await response.json();
+      console.log("New item added:", newItem);
+    } catch (error) {
+      console.error("Error fetching list data:", error);
+    }
+  }
+  //   addList()
+  // }, []);
+
+  const handleClick = () => {
+    console.log("buttonClick");
+    addList();
+  };
 
   return (
     <div>
-      {recipeImage && <img src={recipeImage} alt="Recipe" />}
+      <h2>{recipe?.title}</h2>
+      {recipe?.image && <img src={recipe.image} alt="Recipe" />}
       <h2>Instructions </h2>
-      {instructions?.map((instruction, index) => (
+      {recipe?.analyzedInstructions[0].steps.map((recipe, index) => (
         <div key={index}>
           <div>
             <p>
-              Step {instruction.number}. {instruction.step}
+              Step {recipe.number}. {recipe.step}
             </p>
           </div>
         </div>
       ))}
       <h2>Ingredients</h2>
-      {ingredients?.map((ingredient, index) => (
+      {recipe?.extendedIngredients.map((recipe, index) => (
         <div key={index}>
           <ul>
-            <li> {ingredient.original}</li>
+            <li> {recipe.original}</li>
           </ul>
         </div>
       ))}
-      <button>Add to Favourite</button>;
+      <button onClick={handleClick}>Add to Favourite</button>
     </div>
   );
 }
