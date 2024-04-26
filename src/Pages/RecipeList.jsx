@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function RecipeList() {
@@ -14,7 +14,7 @@ function RecipeList() {
       const response = await fetch(
         `https://api.spoonacular.com/recipes/complexSearch?minCalories=100&maxCalories=${
           calories || 2000
-        }&number=2&apiKey=819bdff34c06457996f606323df51af6&sort=calories`
+        }&number=2&apiKey=083d38774aef44bbbb8eee5cf234fc95&sort=calories`
       );
       const data = await response.json();
       console.log("Data from API:", data);

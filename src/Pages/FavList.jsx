@@ -42,9 +42,11 @@ function FavList() {
       {favourites.map((fav, index) => (
         <div key={index}>
           <p>{fav.fields.id}</p>
+          <p>{fav.fields.title}</p>
+          <img src={fav.fields.image} />
         </div>
       ))}
-      {/* <button onClick={handleClick}>Add to Favourite</button>; */}
+      {/* remove <button onClick={handle}>Add to Favourite</button>; */}
     </div>
   );
 }
@@ -56,3 +58,24 @@ export default FavList;
 }
 
 // [{field: "Name", direction: "desc"}]
+
+// async function handleDelete(deleteId) {
+//   const url = `https://api.airtable.com/v0/app1DjsWsd6bMZV9r/Table%202/${deleteId}`;
+//   try {
+//   const response = await fetch(url, {
+//     method: "DELETE",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer patDqswSJ4ZdyuxUH.9fe043f753120d01ac021eb008b5f3a09a8f6400aa2a16d1e36733632fd3dcc0`,
+//     },
+//   });
+//   if (!response.ok) {
+//     throw new Error("Failed to fetch deleted data");
+//   }
+//   const deletedItem = await response.json();
+//   console.log("Item removed:", deletedItem);
+//   setFavourites(favourites.filter((fav) => fav.fields.id !== deleteId));
+//   } catch (error) {
+//     console.error("Error fetching deleted data:", error);
+//   }
+// }

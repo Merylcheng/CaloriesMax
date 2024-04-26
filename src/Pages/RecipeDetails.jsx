@@ -13,7 +13,7 @@ function RecipeDetails() {
     async function getDetails() {
       try {
         const response = await fetch(
-          `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=819bdff34c06457996f606323df51af6`
+          `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=083d38774aef44bbbb8eee5cf234fc95`
         );
         const data = await response.json();
         console.log("Data from API:", data); // [{steps: [{step: xxx}]}] // data [0].steps
@@ -44,8 +44,8 @@ function RecipeDetails() {
           //sent this to airtable
           fields: {
             id: recipeId,
-            // name: recipe.title,
-            // image: recipe.image,
+            title: recipe.title,
+            image: recipe.image,
           },
         }),
       });
