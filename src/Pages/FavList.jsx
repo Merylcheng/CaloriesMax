@@ -1,4 +1,11 @@
 import { useState, useEffect } from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import CardActions from "@mui/material/CardActions";
+import Collapse from "@mui/material/Collapse";
 
 function FavList() {
   const [favourites, setFavourites] = useState([]);
@@ -50,16 +57,47 @@ function FavList() {
     }
   }
 
+  const [expandedId, setExpandedId] = useState(null); // State to track expanded card
+
+  const handleExpandClick = (id) => {
+    setExpandedId(expandedId === id ? null : id); // Toggle expanded state
+  };
+
   return (
     <div>
-      <h1>Your Favourite Recipes</h1>
+      <Typography variant="h4" gutterBottom>
+        Your Favorite Recipes
+      </Typography>
       {favourites.map((fav) => (
-        <div key={fav.id}>
-          <p>{fav.fields.title}</p>
-          <img src={fav.fields.image} alt={fav.fields.title} />
-          <br />
-          <button onClick={() => handleDelete(fav.id)}>Delete Recipe</button>
-        </div>
+        <Card key={fav.id} sx={{ maxWidth: 445, marginBottom: 2 }}>
+          <CardMedia
+            component="img"
+            height="240"
+            image={fav.fields.image}
+            alt={fav.fields.title}
+          />
+          <CardContent>
+            <Typography variant="h5" component="div" gutterBottom>
+              {fav.fields.title}
+            </Typography>
+            <Collapse in={expandedId === fav.id} timeout="auto" unmountOnExit>
+              <Typography variant="body2" color="text.secondary">
+                {fav.fields.instructions}
+              </Typography>
+            </Collapse>
+          </CardContent>
+          <CardActions>
+            <Button size="small" onClick={() => handleDelete(fav.id)}>
+              Delete Recipe
+            </Button>
+            <Button
+              size="small"
+              onClick={() => handleExpandClick(fav.id)} // Expand click handler
+            >
+              {expandedId === fav.id ? "Collapse" : "Expand"} Instructions
+            </Button>
+          </CardActions>
+        </Card>
       ))}
     </div>
   );

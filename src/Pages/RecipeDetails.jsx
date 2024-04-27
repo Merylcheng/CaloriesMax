@@ -44,6 +44,7 @@ function RecipeDetails() {
             id: recipeId,
             title: recipe.title,
             image: recipe.image,
+            instructions: recipe.instructions,
           },
         }),
       });
