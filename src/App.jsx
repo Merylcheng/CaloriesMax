@@ -7,6 +7,7 @@ import NavBar from "./Components/NavBar";
 import MealPlanner from "./Pages/MealPlanner";
 import FavList from "./Pages/FavList";
 import RecipeDetails from "./Pages/RecipeDetails";
+import DailySpecials from "./Pages/DailySpecials";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/MealPlanner" element={<MealPlanner />} />
         <Route path="/FavList" element={<FavList />} />
         <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
+        <Route path="/DailySpecials" element={<DailySpecials />} />
       </Routes>
     </div>
   );

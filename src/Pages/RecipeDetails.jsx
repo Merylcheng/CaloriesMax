@@ -5,9 +5,9 @@ function RecipeDetails() {
   //   const [instructions, setInstructions] = useState([]);
   //   const [ingredients, setIngredients] = useState([]);
   //   const [recipeImage, setRecipeImage] = useState("");
-  const [recipe, setRecipe] = useState();
+  const [recipe, setRecipe] = useState(); //state variable holds details of recipe fetched from api
 
-  const { recipeId } = useParams();
+  const { recipeId } = useParams(); //fetch uniqiue id from api url
 
   useEffect(() => {
     async function getDetails() {
@@ -21,15 +21,13 @@ function RecipeDetails() {
         // console.log(data.analyzedInstructions[0].steps);
         // setIngredients(data.extendedIngredients);
         // setRecipeImage(data.image);
-        setRecipe(data);
+        setRecipe(data); //storage
       } catch (error) {
         console.error("Error fetching recipe details", error);
       }
     }
     getDetails();
   }, [recipeId]);
-
-  // useEffect(() => {
 
   async function addList() {
     const url = "https://api.airtable.com/v0/app1DjsWsd6bMZV9r/Table%202";
@@ -58,14 +56,12 @@ function RecipeDetails() {
       console.error("Error fetching list data:", error);
     }
   }
-  //   addList()
-  // }, []);
 
   const handleClick = () => {
     console.log("buttonClick");
     addList();
   };
-
+  // && is conditional rendering
   return (
     <div>
       <h2>{recipe?.title}</h2>
