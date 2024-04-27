@@ -18,14 +18,15 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/Home" element={<Home />} />
         <Route path="/RecipeList" element={<RecipeList />} />
-        <Route path="/MealPlanner" element={<MealPlanner />} />
-        <Route path="/FavList" element={<FavList />} />
         <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
         <Route path="/DailySpecials" element={<DailySpecials />} />
+        <Route path="/FavList" element={<FavList />} />
       </Routes>
     </div>
   );
 }
 
 export default App;
+//  <Route path="/MealPlanner" element={<MealPlanner />} />

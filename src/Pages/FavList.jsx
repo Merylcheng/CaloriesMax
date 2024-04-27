@@ -55,7 +55,6 @@ function FavList() {
       <h1>Your Favourite Recipes</h1>
       {favourites.map((fav) => (
         <div key={fav.id}>
-          <p>{fav.fields.id}</p>
           <p>{fav.fields.title}</p>
           <img src={fav.fields.image} alt={fav.fields.title} />
           <br />
