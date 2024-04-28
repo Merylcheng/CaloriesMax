@@ -27,7 +27,7 @@ function FavList() {
           throw new Error("Failed to fetch data");
         }
         const airtable = await response.json();
-        console.log("Data from Airtable:", airtable);
+        console.log("Data from Airtable 202:", airtable);
         setFavourites(airtable.records);
         console.log(airtable.records);
       } catch (error) {
@@ -66,7 +66,7 @@ function FavList() {
 
   return (
     <div>
-      <CustomRecipe />
+      {/* <CustomRecipe /> */}
       <Typography variant="h4" gutterBottom>
         Your Favorite Recipes
       </Typography>
@@ -108,29 +108,5 @@ function FavList() {
 export default FavList;
 
 //component>fav item>fetch>return
-{
-  /* <img src={recipe.image} alt={recipe.title} /> */
-}
 
-// [{field: "Name", direction: "desc"}]
 
-// async function handleDelete(deleteId) {
-//   const url = `https://api.airtable.com/v0/app1DjsWsd6bMZV9r/Table%202/${deleteId}`;
-//   try {
-//   const response = await fetch(url, {
-//     method: "DELETE",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer patDqswSJ4ZdyuxUH.9fe043f753120d01ac021eb008b5f3a09a8f6400aa2a16d1e36733632fd3dcc0`,
-//     },
-//   });
-//   if (!response.ok) {
-//     throw new Error("Failed to fetch deleted data");
-//   }
-//   const deletedItem = await response.json();
-//   console.log("Item removed:", deletedItem);
-//   setFavourites(favourites.filter((fav) => fav.fields.id !== deleteId));
-//   } catch (error) {
-//     console.error("Error fetching deleted data:", error);
-//   }
-// }

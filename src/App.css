@@ -1,0 +1,38 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Fill the entire width */
+  position: fixed; /* Fix the position */
+  top: 0; /* Position at the top */
+  z-index: 1000; /* Ensure the NavBar is above other content */
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-grow: 1; /* Allow the links to take up remaining space */
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #fff;
+  margin-left: 10px; /* Adjust the left margin to reduce the gap */
+  margin-right: 25px; /* Adjust the right margin to reduce the gap */
+  padding: 10px 20px;
+  transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: #f8b400;
+}
