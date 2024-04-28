@@ -8,6 +8,7 @@ import MealPlanner from "./Pages/MealPlanner";
 import FavList from "./Pages/FavList";
 import RecipeDetails from "./Pages/RecipeDetails";
 import DailySpecials from "./Pages/DailySpecials";
+import EditCustom from "./Components/EditCustom";
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
         <Route path="/RecipeList" element={<RecipeList />} />
         <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
         <Route path="/DailySpecials" element={<DailySpecials />} />
+        <Route path="/MealPlanner" element={<MealPlanner />} />
         <Route path="/FavList" element={<FavList />} />
+        <Route path="/EditCustom" element={<EditCustom />} />
       </Routes>
     </div>
   );

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+// import CustomRecipe from "../Components/CustomRecipe";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -51,7 +52,7 @@ function FavList() {
       }
       const deletedItem = await response.json();
       console.log("Item removed:", deletedItem);
-      setFavourites(favourites.filter((fav) => fav.fields.id !== deleteId));
+      setFavourites(favourites.filter((fav) => fav.fields.id !== deleteId)); //shows the remaining recipes after 1 item is deleted
     } catch (error) {
       console.error("Error fetching deleted data:", error);
     }
@@ -65,6 +66,7 @@ function FavList() {
 
   return (
     <div>
+      <CustomRecipe />
       <Typography variant="h4" gutterBottom>
         Your Favorite Recipes
       </Typography>

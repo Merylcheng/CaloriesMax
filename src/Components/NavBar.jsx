@@ -6,7 +6,7 @@ function NavBar() {
       <Link to="/Home">Home</Link> |<Link to="/RecipeList">Recipes</Link> |
       <Link to="/DailySpecials">DailySpecials</Link> |
       <Link to="/FavList">FavList</Link> |
-      {/* <Link to="/MealPlanner">MealPlanner</Link> | */}
+      <Link to="/MealPlanner">MealPlanner</Link> |
     </nav>
   );
 }
