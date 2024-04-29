@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import meal3 from "../images/meal3.jpg";
 
 function RecipeDetails() {
   const [recipe, setRecipe] = useState(); //state variable holds details of recipe fetched from api
@@ -58,7 +59,6 @@ function RecipeDetails() {
     console.log("buttonClick");
     addList();
     setSavedMessage("Recipe saved to favorites!");
-    // Clear the message after a few seconds
     setTimeout(() => {
       setSavedMessage("");
     }, 5000);
@@ -66,41 +66,47 @@ function RecipeDetails() {
   // && is conditional rendering
   return (
     <div>
-      <Container
-        fixed
-        style={{
-          // display: "flex",
-          // flexDirection: "column",
-          // alignItems: "center",
-          // justifyContent: "center",
-          height: "130vh",
+      <Box
+        sx={{
+          backgroundImage: `url(${meal3})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
         }}
       >
-        {/* <Box sx={{ bgcolor: "#cfe8fc", height: "100vh" }} /> */}
-
-        <h2>{recipe?.title}</h2>
-        {recipe?.image && <img src={recipe.image} alt="Recipe" />}
-        <h2>Instructions </h2>
-        {recipe?.analyzedInstructions[0].steps.map((recipe, index) => (
-          <div key={index}>
-            <div>
-              <p>
-                Step {recipe.number}. {recipe.step}
-              </p>
+        <Container
+          fixed
+          style={{
+            height: "130vh",
+          }}
+        >
+          <h2>{recipe?.title}</h2>
+          {recipe?.image && <img src={recipe.image} alt="Recipe" />}
+          <h2>Instructions </h2>
+          {recipe?.analyzedInstructions[0].steps.map((recipe, index) => (
+            <div key={index}>
+              <div>
+                <p>
+                  Step {recipe.number}. {recipe.step}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
-        <h2>Ingredients</h2>
-        {recipe?.extendedIngredients.map((recipe, index) => (
-          <div key={index}>
-            <ul>
-              <li> {recipe.original}</li>
-            </ul>
-          </div>
-        ))}
-        {savedMessage && <h3>{savedMessage}</h3>}
-        <button onClick={handleClick}>Add to Favourite</button>
-      </Container>
+          ))}
+          <h2>Ingredients</h2>
+          {recipe?.extendedIngredients.map((recipe, index) => (
+            <div key={index}>
+              <ul>
+                <li> {recipe.original}</li>
+              </ul>
+            </div>
+          ))}
+          {savedMessage && <h3>{savedMessage}</h3>}
+          <button onClick={handleClick}>Add to Favourite</button>
+        </Container>
+      </Box>
     </div>
   );
 }

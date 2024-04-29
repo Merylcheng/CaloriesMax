@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import RecipeList from "./Pages/RecipeList";
@@ -8,7 +7,7 @@ import MealPlanner from "./Pages/MealPlanner";
 import FavList from "./Pages/FavList";
 import RecipeDetails from "./Pages/RecipeDetails";
 import DailySpecials from "./Pages/DailySpecials";
-// import Planner from "./Components/Planner";
+
 import EditCustom from "./Pages/EditCustom";
 
 function App() {
@@ -24,8 +23,6 @@ function App() {
         <Route path="/DailySpecials" element={<DailySpecials />} />
         <Route exact path="/MealPlanner" element={<MealPlanner />} />
         <Route path="/FavList" element={<FavList />} />
-        {/* <Route path="/Planner" element={<Planner />} /> */}
-        {/* <Route path="/EditCustom" element={<EditCustom />} /> */}
         <Route path="/EditCustom/:mealId" element={<EditCustom />} />
       </Routes>
     </div>
@@ -33,4 +30,3 @@ function App() {
 }
 
 export default App;
-//  <Route path="/MealPlanner" element={<MealPlanner />} />

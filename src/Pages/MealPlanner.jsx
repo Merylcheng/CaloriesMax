@@ -6,6 +6,8 @@
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Box } from "@mui/material";
+import meal3 from "../images/meal3.jpg";
 
 function MealPlanner() {
   const [plan, setPlan] = useState([]);
@@ -87,79 +89,95 @@ function MealPlanner() {
   };
 
   return (
-    <div>
-      <h1>Schedule for the week</h1>
+    <Box
+      sx={{
+        backgroundImage: `url(${meal3})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+      }}
+    >
+      <div>
+        <h1>Schedule for the week</h1>
 
-      <form onSubmit={handleAddCustom}>
-        <fieldset>
-          <legend>Plan Custom Recipe</legend>
-          <label>
-            Date:
-            <input
-              name="date"
-              value={newMeal.date}
-              placeholder="Monday, Tuesday etc"
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Meal:
-            <input
-              name="meal"
-              value={newMeal.meal}
-              placeholder="breakfast, lunch, dinner"
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Name:
-            <input name="title" value={newMeal.title} onChange={handleChange} />
-          </label>
-          <br />
-          <label>
-            Details:
-            <input
-              name="details"
-              value={newMeal.details}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <br />
-          <button type="submit">Add Custom Recipe</button>
-        </fieldset>
-      </form>
+        <form onSubmit={handleAddCustom}>
+          <fieldset>
+            <legend>Plan Custom Recipe</legend>
+            <label>
+              Date:
+              <input
+                name="date"
+                value={newMeal.date}
+                placeholder="Monday, Tuesday etc"
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <label>
+              Meal:
+              <input
+                name="meal"
+                value={newMeal.meal}
+                placeholder="breakfast, lunch, dinner"
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <label>
+              Name:
+              <input
+                name="title"
+                value={newMeal.title}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <label>
+              Details:
+              <input
+                name="details"
+                value={newMeal.details}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <br />
+            <button type="submit">Add Custom Recipe</button>
+          </fieldset>
+        </form>
 
-      <h2>Meal List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Meal</th>
-            <th>Title</th>
-            <th>Details</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {plan.map((meal, index) => (
-            <tr key={index}>
-              <td>{meal.fields.date}</td>
-              <td>{meal.fields.meal}</td>
-              <td>{meal.fields.title}</td>
-              <td>{meal.fields.details}</td>
-              <td>
-                <Link to={`/EditCustom/${meal.id}`}>
-                  <button>Edit Meal</button>
-                </Link>
-              </td>
+        <h2>Meal List</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Meal</th>
+              <th>Title</th>
+              <th>Details</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {plan.map((meal, index) => (
+              <tr key={index}>
+                <td>{meal.fields.date}</td>
+                <td>{meal.fields.meal}</td>
+                <td>{meal.fields.title}</td>
+                <td>{meal.fields.details}</td>
+                <td>
+                  <Link to={`/EditCustom/${meal.id}`}>
+                    <button>Edit Meal</button>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </Box>
   );
 }
 export default MealPlanner;

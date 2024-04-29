@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Box } from "@mui/material";
+import meal3 from "../images/meal3.jpg";
 
 function EditCustom() {
   const [meal, setMeal] = useState({
@@ -79,32 +81,48 @@ function EditCustom() {
   };
 
   return (
-    <div>
-      <h1>Edit Meal</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Date:
-          <input name="date" value={meal.date} onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Meal:
-          <input name="meal" value={meal.meal} onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Name:
-          <input name="title" value={meal.title} onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Ingredients:
-          <input name="details" value={meal.details} onChange={handleChange} />
-        </label>
-        <br />
-        <button type="submit">Update Meal</button>
-      </form>
-    </div>
+    <Box
+      sx={{
+        backgroundImage: `url(${meal3})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+      }}
+    >
+      <div>
+        <h1>Edit Meal</h1>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Date:
+            <input name="date" value={meal.date} onChange={handleChange} />
+          </label>
+          <br />
+          <label>
+            Meal:
+            <input name="meal" value={meal.meal} onChange={handleChange} />
+          </label>
+          <br />
+          <label>
+            Name:
+            <input name="title" value={meal.title} onChange={handleChange} />
+          </label>
+          <br />
+          <label>
+            Ingredients:
+            <input
+              name="details"
+              value={meal.details}
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <button type="submit">Update Meal</button>
+        </form>
+      </div>
+    </Box>
   );
 }
 

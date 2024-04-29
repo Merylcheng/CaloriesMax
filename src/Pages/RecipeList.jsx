@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Typography, Container, Box } from "@mui/material";
-import meal2 from "../meal2.jpg";
+import meal3 from "../images/meal3.jpg";
 
 function RecipeList() {
   const [recipeList, setRecipeList] = useState([]);
@@ -29,7 +29,7 @@ function RecipeList() {
   return (
     <Box
       sx={{
-        backgroundImage: `url(${meal2})`,
+        backgroundImage: `url(${meal3})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         display: "flex",
@@ -41,7 +41,6 @@ function RecipeList() {
       <Container
         maxWidth="s"
         sx={{
-          backgroundColor: "rgba(255, 255, 255, 0.8)",
           padding: "20px",
           borderRadius: "10px",
           height: "800px",
@@ -70,8 +69,7 @@ function RecipeList() {
             gutterBottom
             style={{ marginBottom: "60px", fontFamily: "Roboto" }}
           >
-            Your Ultimate Destination for Effortless Meal Planning and Calorie
-            Tracking!
+            Input your calories per meal and find a delicious meal
           </Typography>
 
           <input

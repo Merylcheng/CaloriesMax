@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import CustomRecipe from "../Components/CustomRecipe";
+
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -105,5 +105,3 @@ function FavList() {
 }
 
 export default FavList;
-
-//component>fav item>fetch>return

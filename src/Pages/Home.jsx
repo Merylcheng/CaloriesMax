@@ -1,5 +1,5 @@
 import { Button, Typography, Container, Box } from "@mui/material";
-import meal2 from "../meal2.jpg"; // Import your image
+import meal2 from "../images/meal2.jpg"; // Import your image
 import { Link } from "react-router-dom";
 import "../fonts.css"; // Import the CSS file where you define your fonts
 

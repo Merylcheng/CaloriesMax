@@ -3,6 +3,8 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import { Link } from "react-router-dom";
+import { Box } from "@mui/material";
+import meal3 from "../images/meal3.jpg";
 
 function DailySpecials() {
   const [meals, setMeals] = useState([]);
@@ -24,19 +26,31 @@ function DailySpecials() {
   }, []);
 
   return (
-    <div>
-      <h2>Ideas for your meal</h2>
-      <ImageList sx={{ width: 1000, height: 700 }}>
-        {meals.map((recipe) => (
-          <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
-            <ImageListItem key={recipe.id}>
-              <img src={recipe.image} alt={recipe.title} />
-              <ImageListItemBar title={recipe.title} />
-            </ImageListItem>
-          </Link>
-        ))}
-      </ImageList>
-    </div>
+    <Box
+      sx={{
+        backgroundImage: `url(${meal3})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+      }}
+    >
+      <div>
+        <h2>Ideas for your meal</h2>
+        <ImageList sx={{ width: 1000, height: 700 }}>
+          {meals.map((recipe) => (
+            <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
+              <ImageListItem key={recipe.id}>
+                <img src={recipe.image} alt={recipe.title} />
+                <ImageListItemBar title={recipe.title} />
+              </ImageListItem>
+            </Link>
+          ))}
+        </ImageList>
+      </div>
+    </Box>
   );
 }
 
