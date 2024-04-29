@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Typography, Container, Box } from "@mui/material";
-import meal2b from "../meal2b.jpg";
+import meal2 from "../meal2.jpg";
 
 function RecipeList() {
   const [recipeList, setRecipeList] = useState([]);
@@ -29,7 +29,7 @@ function RecipeList() {
   return (
     <Box
       sx={{
-        backgroundImage: `url(${meal2b})`,
+        backgroundImage: `url(${meal2})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         display: "flex",
