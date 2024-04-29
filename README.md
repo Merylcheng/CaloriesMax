@@ -12,8 +12,7 @@ Introducing CaLories Max, we're here to make your dieting journey a whole lot ta
 
 ---
 
-<img src="images/Wireframe-caloriesMax.jpg"/>
-# Diet Planner from scracth!
+<img src="images/Wireframe-caloriesMax.png"/>
 
 Put in the Calories you like and be presented with loads of recipes to choose from!
 
@@ -23,7 +22,7 @@ Follow this link to explore world of delicous food! :https://calories-max.vercel
 
 ---
 
-<img src="images/caloriesMaxHomepg.jpg"/>
+<img src="images/caloriesMaxHomepg.png"/>
 
 1. Home Page
    Get started on your food adventure with a friendly home page. We'll greet you warmly and help you find your way around with a simple menu. Ready to explore? Just hit the "Let's Get Started" button!
@@ -46,7 +45,20 @@ Follow this link to explore world of delicous food! :https://calories-max.vercel
 7. Meal Planner
    Meal Planner is created in a Schedule format, where users may log their dietary consumption wih the flexbility to choose Date/Day, Meal (Breakfast, lunch, dinner), Name of Dish, and Details (e.g Calorie intake etc.)
 
-Another function of the Meal Planner is to enable users to include custom diet recipes for their future reference as well!
+### Future Developments
+
+---
+
+Here’s some future ideas that can be integrated:
+
+- User Profiles: Allow users to create profiles where they can save their dietary preferences, allergies, and other relevant information to tailor recipe recommendations even further.
+- Nutritional Information: Enhance recipe details to include nutritional information such as calories, macronutrients, and micronutrients, providing users with a comprehensive overview of the meal's health benefits.
+- Recipe Rating and Reviews: Implement a rating and review system where users can rate recipes they've tried and leave comments or suggestions for other users. This can help build a community around sharing recipe experiences.
+- Integration with Fitness Trackers: Allow users to sync their calorie intake data with popular fitness tracking apps or devices, providing them with a seamless way to monitor their overall health and fitness goals.
+- Advanced Search Filters: Expand the search functionality to include filters for dietary restrictions (e.g., vegetarian, vegan, gluten-free), meal types (e.g., breakfast, lunch, dinner, snacks), and cuisine preferences.
+- Ingredient Substitutions: Provide suggestions for ingredient substitutions based on dietary restrictions or ingredient availability, ensuring that users can still enjoy recipes even if they're missing certain ingredients.
+- Cooking Videos: Incorporate cooking tutorial videos for selected recipes to assist users in preparing meals more effectively and confidently.
+- Community Features: Introduce social features such as forums or discussion boards where users can share tips, tricks, and recipe modifications with each other, fostering a sense of community and support among users on their dieting journey.
 
 ## Tech Stack Ultilised
 
