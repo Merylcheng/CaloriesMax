@@ -1,0 +1,35 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f1e1e;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.navbar-brand a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.navbar-links {
+  display: flex;
+  justify-content: space-between; /* Add this line */
+  align-items: center;
+  margin-right: 20px;
+  flex-grow: 1; /* Add this line */
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
+
+.larger-text {
+  font-size: 2rem; /* Adjust the font size as needed */
+}

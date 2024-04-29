@@ -66,7 +66,6 @@ function FavList() {
 
   return (
     <div>
-      {/* <CustomRecipe /> */}
       <Typography variant="h4" gutterBottom>
         Your Favorite Recipes
       </Typography>
@@ -108,5 +107,3 @@ function FavList() {
 export default FavList;
 
 //component>fav item>fetch>return
-
-

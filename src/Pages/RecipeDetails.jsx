@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 
 function RecipeDetails() {
-  //   const [instructions, setInstructions] = useState([]);
-  //   const [ingredients, setIngredients] = useState([]);
-  //   const [recipeImage, setRecipeImage] = useState("");
   const [recipe, setRecipe] = useState(); //state variable holds details of recipe fetched from api
 
   const { recipeId } = useParams(); //fetch uniqiue id from api url
+  const [savedMessage, setSavedMessage] = useState("");
 
   useEffect(() => {
     async function getDetails() {
@@ -17,10 +17,6 @@ function RecipeDetails() {
         );
         const data = await response.json();
         console.log("Data from API:", data); // [{steps: [{step: xxx}]}] // data [0].steps
-        // setInstructions(data.analyzedInstructions[0].steps); // Accessing recipes array from the data object
-        // console.log(data.analyzedInstructions[0].steps);
-        // setIngredients(data.extendedIngredients);
-        // setRecipeImage(data.image);
         setRecipe(data); //storage
       } catch (error) {
         console.error("Error fetching recipe details", error);
@@ -61,31 +57,50 @@ function RecipeDetails() {
   const handleClick = () => {
     console.log("buttonClick");
     addList();
+    setSavedMessage("Recipe saved to favorites!");
+    // Clear the message after a few seconds
+    setTimeout(() => {
+      setSavedMessage("");
+    }, 5000);
   };
   // && is conditional rendering
   return (
     <div>
-      <h2>{recipe?.title}</h2>
-      {recipe?.image && <img src={recipe.image} alt="Recipe" />}
-      <h2>Instructions </h2>
-      {recipe?.analyzedInstructions[0].steps.map((recipe, index) => (
-        <div key={index}>
-          <div>
-            <p>
-              Step {recipe.number}. {recipe.step}
-            </p>
+      <Container
+        fixed
+        style={{
+          // display: "flex",
+          // flexDirection: "column",
+          // alignItems: "center",
+          // justifyContent: "center",
+          height: "130vh",
+        }}
+      >
+        {/* <Box sx={{ bgcolor: "#cfe8fc", height: "100vh" }} /> */}
+
+        <h2>{recipe?.title}</h2>
+        {recipe?.image && <img src={recipe.image} alt="Recipe" />}
+        <h2>Instructions </h2>
+        {recipe?.analyzedInstructions[0].steps.map((recipe, index) => (
+          <div key={index}>
+            <div>
+              <p>
+                Step {recipe.number}. {recipe.step}
+              </p>
+            </div>
           </div>
-        </div>
-      ))}
-      <h2>Ingredients</h2>
-      {recipe?.extendedIngredients.map((recipe, index) => (
-        <div key={index}>
-          <ul>
-            <li> {recipe.original}</li>
-          </ul>
-        </div>
-      ))}
-      <button onClick={handleClick}>Add to Favourite</button>
+        ))}
+        <h2>Ingredients</h2>
+        {recipe?.extendedIngredients.map((recipe, index) => (
+          <div key={index}>
+            <ul>
+              <li> {recipe.original}</li>
+            </ul>
+          </div>
+        ))}
+        {savedMessage && <h3>{savedMessage}</h3>}
+        <button onClick={handleClick}>Add to Favourite</button>
+      </Container>
     </div>
   );
 }

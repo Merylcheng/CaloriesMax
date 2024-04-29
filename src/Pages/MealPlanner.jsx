@@ -95,7 +95,12 @@ function MealPlanner() {
           <legend>Plan Custom Recipe</legend>
           <label>
             Date:
-            <input name="title" value={newMeal.title} onChange={handleChange} />
+            <input
+              name="date"
+              value={newMeal.date}
+              placeholder="Monday, Tuesday etc"
+              onChange={handleChange}
+            />
           </label>
           <br />
           <label>
@@ -128,16 +133,32 @@ function MealPlanner() {
       </form>
 
       <h2>Meal List</h2>
-      <ul>
-        {plan.map((meal, index) => (
-          <li key={index}>
-            <strong>{meal.fields.title}</strong>: {meal.fields.ingredients}
-            <Link to={`/EditCustom/${meal.id}`}>
-              <button>Edit Meal</button>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Meal</th>
+            <th>Title</th>
+            <th>Details</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {plan.map((meal, index) => (
+            <tr key={index}>
+              <td>{meal.fields.date}</td>
+              <td>{meal.fields.meal}</td>
+              <td>{meal.fields.title}</td>
+              <td>{meal.fields.details}</td>
+              <td>
+                <Link to={`/EditCustom/${meal.id}`}>
+                  <button>Edit Meal</button>
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

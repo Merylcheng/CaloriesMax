@@ -1,40 +1,60 @@
-import React, { useState } from "react";
+import { Button, Typography, Container, Box } from "@mui/material";
+import meal2 from "../meal2.jpg"; // Import your image
 import { Link } from "react-router-dom";
-import "../Home.css";
-import "../App.css";
 
 function Home() {
-  const [buttonClicked, setButtonClicked] = useState(false);
-
-  const handleButtonClick = () => {
-    setButtonClicked(true);
-
-    // Reset the button state after 300ms
-    setTimeout(() => {
-      setButtonClicked(false);
-    }, 300);
-  };
-
   return (
-    <div className="home-container">
-      <div className="welcome-message">
-        <h1>Welcome to Calories Max!</h1>
-        <p>
-          Keeping track of your calories intake and too lazy to plan a meal?
-        </p>
-        {/* <p>
-          Let us do all that for you & just focus on getting that tummy YUMMY!
-        </p> */}
-        <Link to="/RecipeList">
-          <button
-            className={`start-button ${buttonClicked ? "move-down" : ""}`}
-            onClick={handleButtonClick}
+    <Box
+      sx={{
+        backgroundImage: `url(${meal2})`, // Specify the imported image
+        backgroundSize: "cover", // Adjust background size as needed
+        backgroundPosition: "center", // Center the background image
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+      }}
+    >
+      <Container
+        maxWidth="s"
+        sx={{
+          backgroundColor: "rgba(255, 255, 255, 0.8)", // White with 80% opacity
+          padding: "20px", // Add some padding for better readability
+          borderRadius: "10px", // Add some border radius for aesthetics
+          height: "700px",
+          width: "80%",
+          display: "flex", // Make container a flex container
+          flexDirection: "column", // Arrange children vertically
+          justifyContent: "center", // Center items vertically
+          alignItems: "center", // Center items horizontally
+        }}
+      >
+        <div className="welcome-message" style={{ textAlign: "center" }}>
+          <Typography
+            variant="h2"
+            component="h1"
+            gutterBottom
+            style={{ marginBottom: "30px" }}
           >
-            Let's Get Started!
-          </button>
-        </Link>
-      </div>
-    </div>
+            Calories Max
+          </Typography>
+          <Typography
+            variant="h5" // Change the variant to adjust font size
+            gutterBottom
+            style={{ marginBottom: "60px" }}
+          >
+            Your Ultimate Destination for Effortless Meal Planning and Calorie
+            Tracking!
+          </Typography>
+
+          <Link to="/RecipeList">
+            <Button variant="contained" color="primary">
+              Let's Get Started!
+            </Button>
+          </Link>
+        </div>
+      </Container>
+    </Box>
   );
 }
 
