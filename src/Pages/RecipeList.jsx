@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Button, Typography, Container, Box } from "@mui/material";
+import meal2b from "../meal2b.jpg";
 
 function RecipeList() {
   const [recipeList, setRecipeList] = useState([]);
@@ -14,7 +16,7 @@ function RecipeList() {
       const response = await fetch(
         `https://api.spoonacular.com/recipes/complexSearch?minCalories=100&maxCalories=${
           calories || 2000
-        }&number=2&apiKey=083d38774aef44bbbb8eee5cf234fc95&sort=calories`
+        }&number=2&apiKey=a8c5cbd02cdf4263b070a05a48cc77b3&sort=calories`
       );
       const data = await response.json();
       console.log("Data from API:", data);
@@ -25,24 +27,82 @@ function RecipeList() {
   }
 
   return (
-    <div>
-      <input
-        type="number"
-        placeholder="Calories (e.g 500)"
-        onChange={handleInputChange}
-      />
-      <button onClick={getRecipeList}>Get Meal </button>
+    <Box
+      sx={{
+        backgroundImage: `url(${meal2b})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+      }}
+    >
+      <Container
+        maxWidth="s"
+        sx={{
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          padding: "20px",
+          borderRadius: "10px",
+          height: "800px",
+          width: "80%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div className="welcome-message" style={{ textAlign: "center" }}>
+          <Typography
+            variant="h2"
+            component="h1"
+            gutterBottom
+            style={{
+              marginBottom: "30px",
+              fontFamily: "Playfair Display",
+              fontWeight: 700,
+            }}
+          >
+            Calories Max
+          </Typography>
+          <Typography
+            variant="h5"
+            gutterBottom
+            style={{ marginBottom: "60px", fontFamily: "Roboto" }}
+          >
+            Your Ultimate Destination for Effortless Meal Planning and Calorie
+            Tracking!
+          </Typography>
 
-      {recipeList.map((recipe) => (
-        <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
-          <div key={recipe.id}>
-            <p>{recipe.title}</p>
-            <p>Calories: {recipe.nutrition?.nutrients[0]?.amount} kcal</p>
-            <img src={recipe.image} alt={recipe.title} />
-          </div>
-        </Link>
-      ))}
-    </div>
+          <input
+            type="number"
+            placeholder="Calories (e.g 500)"
+            onChange={handleInputChange}
+            style={{ width: "300px", padding: "10px", fontSize: "16px" }}
+          />
+          <br />
+          <br />
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={getRecipeList}
+            style={{ marginBottom: "20px" }}
+          >
+            Get Meal
+          </Button>
+
+          {recipeList.map((recipe) => (
+            <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
+              <div key={recipe.id}>
+                <p>{recipe.title}</p>
+                <p>Calories: {recipe.nutrition?.nutrients[0]?.amount} kcal</p>
+                <img src={recipe.image} alt={recipe.title} />
+              </div>
+            </Link>
+          ))}
+        </div>
+      </Container>
+    </Box>
   );
 }
 

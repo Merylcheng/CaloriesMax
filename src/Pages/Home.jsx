@@ -1,6 +1,7 @@
 import { Button, Typography, Container, Box } from "@mui/material";
 import meal2 from "../meal2.jpg"; // Import your image
 import { Link } from "react-router-dom";
+import "../fonts.css"; // Import the CSS file where you define your fonts
 
 function Home() {
   return (
@@ -34,14 +35,18 @@ function Home() {
             variant="h2"
             component="h1"
             gutterBottom
-            style={{ marginBottom: "30px" }}
+            style={{
+              marginBottom: "30px",
+              fontFamily: "Playfair Display",
+              fontWeight: 700,
+            }} // Example of applying font family and weight
           >
             Calories Max
           </Typography>
           <Typography
             variant="h5" // Change the variant to adjust font size
             gutterBottom
-            style={{ marginBottom: "60px" }}
+            style={{ marginBottom: "60px", fontFamily: "Roboto" }} // Example of applying font family
           >
             Your Ultimate Destination for Effortless Meal Planning and Calorie
             Tracking!
