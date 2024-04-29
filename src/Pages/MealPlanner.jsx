@@ -9,7 +9,12 @@ import { Link } from "react-router-dom";
 
 function MealPlanner() {
   const [plan, setPlan] = useState([]);
-  const [newMeal, setNewMeal] = useState({ title: "", ingredients: "" }); //INITIALISE INPUT
+  const [newMeal, setNewMeal] = useState({
+    date: "",
+    meal: "",
+    title: "",
+    details: "",
+  }); //INITIALISE INPUT
 
   useEffect(() => {
     async function fetchPlanList() {
@@ -50,8 +55,10 @@ function MealPlanner() {
         },
         body: JSON.stringify({
           fields: {
+            date: newMeal.date,
+            meal: newMeal.meal,
             title: newMeal.title,
-            ingredients: newMeal.ingredients,
+            details: newMeal.details,
           },
         }),
       });
@@ -59,7 +66,7 @@ function MealPlanner() {
       if (response.ok) {
         const newItem = await response.json();
         console.log("New item added:", newItem);
-        setNewMeal({ title: "", ingredients: "" }); // Clear input after adding
+        setNewMeal({ date: "", meal: "", title: "", details: "" }); // Clear input after adding
         setPlan((prevPlan) => [...prevPlan, newItem]); // Add new item to the plan list(storage)
       } else {
         throw new Error("Failed to add custom recipe");
@@ -87,18 +94,35 @@ function MealPlanner() {
         <fieldset>
           <legend>Plan Custom Recipe</legend>
           <label>
+            Date:
+            <input name="title" value={newMeal.title} onChange={handleChange} />
+          </label>
+          <br />
+          <label>
+            Meal:
+            <input
+              name="meal"
+              value={newMeal.meal}
+              placeholder="breakfast, lunch, dinner"
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <label>
             Name:
             <input name="title" value={newMeal.title} onChange={handleChange} />
           </label>
           <br />
           <label>
-            Ingredients:
+            Details:
             <input
-              name="ingredients"
-              value={newMeal.ingredients}
+              name="details"
+              value={newMeal.details}
               onChange={handleChange}
             />
           </label>
+          <br />
+          <br />
           <button type="submit">Add Custom Recipe</button>
         </fieldset>
       </form>

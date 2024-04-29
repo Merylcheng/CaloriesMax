@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 function EditCustom() {
-  const [meal, setMeal] = useState({ title: "", ingredients: "" });
+  const [meal, setMeal] = useState({
+    date: "",
+    meal: "",
+    title: "", // Initialize with default value
+    details: "", // Initialize with default value
+  });
   const { mealId } = useParams();
 
   useEffect(() => {
@@ -45,8 +50,10 @@ function EditCustom() {
         },
         body: JSON.stringify({
           fields: {
+            date: meal.date,
+            meal: meal.meal,
             title: meal.title,
-            ingredients: meal.ingredients,
+            details: meal.details,
           },
         }),
       });
@@ -63,6 +70,8 @@ function EditCustom() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log("Name:", name);
+    console.log("Value:", value);
     setMeal({ ...meal, [name]: value });
   };
 
@@ -76,17 +85,23 @@ function EditCustom() {
       <h1>Edit Meal</h1>
       <form onSubmit={handleSubmit}>
         <label>
+          Date:
+          <input name="date" value={meal.date} onChange={handleChange} />
+        </label>
+        <br />
+        <label>
+          Meal:
+          <input name="meal" value={meal.meal} onChange={handleChange} />
+        </label>
+        <br />
+        <label>
           Name:
           <input name="title" value={meal.title} onChange={handleChange} />
         </label>
         <br />
         <label>
           Ingredients:
-          <input
-            name="ingredients"
-            value={meal.ingredients}
-            onChange={handleChange}
-          />
+          <input name="details" value={meal.details} onChange={handleChange} />
         </label>
         <br />
         <button type="submit">Update Meal</button>
