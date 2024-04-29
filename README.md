@@ -12,8 +12,6 @@ Introducing CaLories Max, we're here to make your dieting journey a whole lot ta
 
 ---
 
-<img src="images/Wireframe-caloriesMax.png"/>
-
 Put in the Calories you like and be presented with loads of recipes to choose from!
 
 Follow this link to explore world of delicous food! :https://calories-max.vercel.app
@@ -22,7 +20,9 @@ Follow this link to explore world of delicous food! :https://calories-max.vercel
 
 ---
 
-<img src="images/caloriesMaxHomepg.png"/>
+![alt text](/src/images/Wireframe-caloriesMax.png)
+
+![alt text](/src/images/caloriesMaxHomepg.png)
 
 1. Home Page
    Get started on your food adventure with a friendly home page. We'll greet you warmly and help you find your way around with a simple menu. Ready to explore? Just hit the "Let's Get Started" button!

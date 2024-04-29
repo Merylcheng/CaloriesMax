@@ -16,7 +16,7 @@ function RecipeList() {
       const response = await fetch(
         `https://api.spoonacular.com/recipes/complexSearch?minCalories=100&maxCalories=${
           calories || 2000
-        }&number=2&apiKey=a8c5cbd02cdf4263b070a05a48cc77b3&sort=calories`
+        }&number=2&apiKey=d57dc75de23047b1ba9591e14fc72af1&sort=calories`
       );
       const data = await response.json();
       console.log("Data from API:", data);

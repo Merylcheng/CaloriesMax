@@ -13,7 +13,7 @@ function DailySpecials() {
     async function getMealRandom() {
       try {
         const response = await fetch(
-          "https://api.spoonacular.com/recipes/random?number=3&apiKey=a8c5cbd02cdf4263b070a05a48cc77b3"
+          "https://api.spoonacular.com/recipes/random?number=3&apiKey=d57dc75de23047b1ba9591e14fc72af1"
         );
         const data = await response.json();
         console.log("Data from API:", data);

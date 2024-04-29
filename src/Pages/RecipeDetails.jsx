@@ -14,7 +14,7 @@ function RecipeDetails() {
     async function getDetails() {
       try {
         const response = await fetch(
-          `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=083d38774aef44bbbb8eee5cf234fc95`
+          `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=d57dc75de23047b1ba9591e14fc72af1`
         );
         const data = await response.json();
         console.log("Data from API:", data); // [{steps: [{step: xxx}]}] // data [0].steps
@@ -56,14 +56,13 @@ function RecipeDetails() {
   }
 
   const handleClick = () => {
-    console.log("buttonClick");
     addList();
     setSavedMessage("Recipe saved to favorites!");
     setTimeout(() => {
       setSavedMessage("");
     }, 5000);
   };
-  // && is conditional rendering
+  // && conditional rendering used to display saved msg when it can
   return (
     <div>
       <Box

@@ -3,14 +3,15 @@ import { useParams } from "react-router-dom";
 import { Box } from "@mui/material";
 import meal3 from "../images/meal3.jpg";
 
+// Initialize with default value
 function EditCustom() {
   const [meal, setMeal] = useState({
     date: "",
     meal: "",
-    title: "", // Initialize with default value
-    details: "", // Initialize with default value
+    title: "",
+    details: "",
   });
-  const { mealId } = useParams();
+  const { mealId } = useParams(); //extract parameter from url
 
   useEffect(() => {
     async function fetchMeal() {
@@ -69,18 +70,20 @@ function EditCustom() {
       console.error("Error updating meal:", error.message);
     }
   }
-
+  //update state accordingly
   const handleChange = (e) => {
     const { name, value } = e.target;
     setMeal({ ...meal, [name]: value });
   };
 
+  //update meal data in airtable
   const handleSubmit = (e) => {
     e.preventDefault();
     updateMeal();
   };
 
   return (
+    //value from setMeal(xxx) bound to meal object, thus input reflect updated value
     <Box
       sx={{
         backgroundImage: `url(${meal3})`,

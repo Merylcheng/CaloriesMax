@@ -1,9 +1,3 @@
-//GET =>POST
-//SHOULD USE PARAMS
-//UNIQUE ID? POST NO NEED. EDIT HAS TO EXTRACT SPECIFICALLY
-//CAN MAKE AIRTAABLE WITH DATE OPTIONS?
-//SHOULD COMBINE EDIT FORM IN?
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
@@ -16,7 +10,7 @@ function MealPlanner() {
     meal: "",
     title: "",
     details: "",
-  }); //INITIALISE INPUT
+  }); //INITIALISE INPUT WHEN STORE DETAILS OF NEW MEAL ADDED
 
   useEffect(() => {
     async function fetchPlanList() {
@@ -78,11 +72,13 @@ function MealPlanner() {
     }
   }
 
+  //HANDLE CHANGES INPUT FIELDS ACCORDINGLY
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewMeal({ ...newMeal, [name]: value }); //UPDATE STATE, SPREAD THEN OVERRIDE
   };
 
+  //HANDLE ME CUSTOM MEAL
   const handleAddCustom = (e) => {
     e.preventDefault();
     addCustom();
@@ -182,8 +178,11 @@ function MealPlanner() {
 }
 export default MealPlanner;
 
-// https://api.spoonacular.com/recipes/random?number=1&apiKey=819bdff34c06457996f606323df51af6
-
-// GET => POST
+//GET =>POST
+//SHOULD USE PARAMS
+//UNIQUE ID? POST NO NEED. EDIT HAS TO EXTRACT SPECIFICALLY
+//CAN MAKE AIRTAABLE WITH DATE OPTIONS?
+//SHOULD COMBINE EDIT FORM IN?
 // DO YOUR STORAGE
+//RMB TO MAP TO DISPLAY EACH MEAL
 // LINK TO ${}
